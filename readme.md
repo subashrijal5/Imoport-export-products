@@ -47,6 +47,11 @@ npm run dev
 - yoeunes/toastr is used for the toster, Documentation link
 -- https://github.com/yoeunes/toastr
 ```
+
+ ```
+ - Typeahead js used in nationality field of client create, you can use this on other places by reviewing the code at there, 
+ - on the same form,  Fields.blade, you can use is edit form too. 
+ ```
 ## Insruction for extending the application
 
 ```

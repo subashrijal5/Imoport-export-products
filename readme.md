@@ -51,9 +51,13 @@ npm run dev
 
 ```
 -  Repository design pattern is followed
--  For the crud operations, baserepository and baseController class are already there, and some basic methods, such as      create, update, find, destroy, restore etc. If this doesn't work for you you can simply override the existing method. on respected repository or controller  
-- For the export purpose, CommonExport is available, please check the respective class for the use and the laravel-excel documentation mentioned above 
-- Please extend AppBaseController class instead of default baseController to use some additional methods, please check it out there.  
+-  For the crud operations, baserepository and baseController class are already there,
+- and some basic methods, such as      create, update, find, destroy, restore etc. If this doesn't work for you,
+- you can simply override the existing method. on respected repository or controller  
+- For the export purpose, CommonExport is available, please check the respective 
+- class for the use and the laravel-excel documentation mentioned above 
+- Please extend AppBaseController class instead of default baseController 
+- to use some additional methods, please check it out there.  
 - Note** On creating model, make sure, you create model in following app/Models/SomeModel.php 
 
 

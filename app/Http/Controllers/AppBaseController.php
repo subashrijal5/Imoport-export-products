@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Helpers\FunctionHelper;
@@ -24,76 +23,12 @@ use Throwable;
  */
 class AppBaseController extends Controller
 {
-    public $entity;
-    public $repository;
-
-
-    public function sendResponse($result, $message)
-    {
-        return Response::json(ResponseUtil::makeResponse($message, $result));
-    }
-
-    public function sendError($error, $code = 404)
-    {
-        return Response::json(ResponseUtil::makeError($error), $code);
-    }
-
     public function sendSuccess($message)
     {
         return Response::json([
             'success' => true,
             'message' => $message
         ], 200);
-    }
-
-    /**
-     * Remove the specified Category from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $category = $this->repository->find($id);
-
-        if (empty($category)) {
-            Flash::error($this->entity['singular'] . ' not found');
-
-            return redirect(route($this->entity['url'] . '.index'));
-        }
-
-        $this->repository->delete($id);
-
-        Flash::success($this->entity['singular'] . ' deleted successfully.');
-
-        return redirect(route($this->entity['url'] . '.index'));
-    }
-
-    /**
-     * Remove the specified Model from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function deleted($id)
-    {
-        $record = $this->repository->find($id, ['*'], true);
-
-        if (empty($record)) {
-            Flash::error($this->entity['singular'] . ' not found');
-            return redirect(route($this->entity['url'] . '.index'));
-        }
-
-        $record->is_deleted = 1;
-        $record->save();
-
-        $this->repository->delete($id);
-
-        Flash::success($this->entity['singular'] . ' deleted successfully.');
-
-        return redirect(route($this->entity['url'] . '.index'));
     }
 
     /**
@@ -151,7 +86,6 @@ class AppBaseController extends Controller
     {
         $record = $this->repository->find($id, ['*'], true);
         $message = '';
-        // dd($this->entity);
         if (empty($record)) {
             return $this->sendError($this->entity['view'] . ' not found');
         }
